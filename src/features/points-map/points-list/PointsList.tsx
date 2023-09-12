@@ -3,6 +3,7 @@ import {PointListProps} from "./PointList.type.ts";
 import {useTheme} from "styled-components";
 import {PointListCard} from "./points-list-card/PointListCard.tsx";
 import {SearchBox} from "../../../components/search-box/SearchBox.tsx";
+import {MagnifyingGlassIcon} from "@radix-ui/react-icons";
 
 export function PointsList(props: PointListProps) {
   const theme = useTheme()
@@ -32,17 +33,31 @@ export function PointsList(props: PointListProps) {
         <Text size="6" weight="bold" align={"left"} color={"gray"}>
           Confira aqui o eletroposto mais perto de você.
         </Text>
-       <SearchBox onSearch={props.onSearch} />
+        <SearchBox onSearch={props.onSearch} />
         <Separator my="5" size="4"/>
       </Flex>
-      <Flex
-        direction={"column"}
-        gap={"4"}
-      >
-        {props.points.map((point) => (
-          <PointListCard point={point} onNavigate={props.onNavigate} key={point.id}/>
-        ))}
-      </Flex>
+      {props.points.length > 0 ? (
+        <Flex
+          direction={"column"}
+          gap={"4"}
+        >
+          {props.points.map((point) => (
+            <PointListCard point={point} onNavigate={props.onNavigate} key={point.id}/>
+          ))}
+        </Flex>
+      ) : (
+        <Flex
+          direction={"column"}
+          align={"center"}
+          justify={"center"}
+          height={'100%'}
+        >
+          <MagnifyingGlassIcon height="40" width="40" color={"gray"}/>
+          <Text size="3" weight="bold" align={"center"} color={"gray"}>
+            Nenhum toten encontrado
+          </Text>
+        </Flex>
+      )}
     </Flex>
   )
 }

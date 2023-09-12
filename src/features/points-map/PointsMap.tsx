@@ -5,9 +5,9 @@ import {useState} from "react";
 import {PointsList} from "./points-list/PointsList.tsx";
 
 export function PointsMap() {
-  const {data = []} = useGetTotensQuery()
   const [destination, setDestination] = useState<google.maps.LatLngLiteral>()
   const [search, setSearch] = useState("")
+  const {data = []} = useGetTotensQuery(search)
   
   const handleOnSearch = (search: string) => {
     setDestination(undefined)
@@ -18,7 +18,6 @@ export function PointsMap() {
     <Flex
       width={'100%'}
       height={'100%'}
-  
     >
       <PointsList
         points={data}

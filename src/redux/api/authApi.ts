@@ -1,15 +1,15 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {ILoginResult} from "../../shared/interfaces/ILoginResult.ts";
 import {ILoginInput} from "../../shared/interfaces/ILoginInput.ts";
 import {ISignInInput} from "../../shared/interfaces/ISignInInput.ts";
 import {ISignInResult} from "../../shared/interfaces/ISignInResult.ts";
 
-const baseUrl = import.meta.env.API_URL
+const baseUrl = "https://localhost:7266/api/"
 
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl
+    baseUrl,
   }),
   endpoints: (builder) => ({
     login: builder.mutation<ILoginResult, ILoginInput>({
@@ -17,7 +17,6 @@ export const authApi = createApi({
         url: "Login",
         method: "POST",
         body: data,
-        credentials: "include"
       })
     }),
     signIn: builder.mutation<ISignInResult, ISignInInput>({
@@ -29,3 +28,8 @@ export const authApi = createApi({
     })
   })
 })
+
+export const {
+  useSignInMutation,
+  useLoginMutation
+} = authApi

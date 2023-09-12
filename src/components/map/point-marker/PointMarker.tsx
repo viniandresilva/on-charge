@@ -9,7 +9,7 @@ export function PointMarker(props: PointMarkerProps) {
   const { lat, lng } = props.point
   const [infoVisible, setInfoVisible] = useState(false)
   const { data } = useGetTotenQuery(props.point.id, { skip: !infoVisible})
-  const {locale, region, available, connector, value} = useTotenInfo(data)
+  const {locale, region} = useTotenInfo(data)
   
   const handleOnClickMarker = () => setInfoVisible(true)
   
@@ -22,22 +22,13 @@ export function PointMarker(props: PointMarkerProps) {
       </Dialog.Trigger>
       <Dialog.Content style={{ maxWidth: 350 }}>
         <Dialog.Title>
-          <img src={"/images/logo-256.png"} width={125}/>
+          <img src={"/images/logo-256.png"} width={125} alt={"OnCharge"}/>
         </Dialog.Title>
         <Dialog.Description size="3" weight={"bold"}>
           {locale}
         </Dialog.Description>
         <Dialog.Description size="2" mb={"3"} weight={"light"}>
           {region}
-        </Dialog.Description>
-        <Dialog.Description size="2" weight={"light"}>
-          <b>Conector:</b> {connector}
-        </Dialog.Description>
-        <Dialog.Description size="2" weight={"light"}>
-          <b>Situação:</b> {available}
-        </Dialog.Description>
-        <Dialog.Description size="2" weight={"light"}>
-          <b>Valor:</b> {value}
         </Dialog.Description>
         <Flex gap="3" mt="4" justify="between">
           <Dialog.Close>

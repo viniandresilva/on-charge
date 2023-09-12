@@ -3,6 +3,7 @@ import {HomeItem} from "../components/home-item/HomeItem.tsx";
 import wallBoxImage from "/images/wallbox.png"
 import carPlugImage from "/images/car-plug.png"
 import {Banner} from "../components/banner";
+import {Footer} from "../components/footer/Footer.tsx";
 export function Home() {
  
   return (
@@ -45,6 +46,7 @@ export function Home() {
           reverse={false}
         />
       </Flex>
+      <Footer />
     </Flex>
   )
 }

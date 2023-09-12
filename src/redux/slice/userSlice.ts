@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {ISignInInput} from "../../shared/interfaces/ISignInInput.ts";
+import {ILoginResult} from "../../shared/interfaces/ILoginResult.ts";
 
 interface IUserState {
-  user: ISignInInput | null;
+  user: ILoginResult | null;
 }
 
 const initialState: IUserState = {
@@ -14,12 +14,8 @@ export const userSlice = createSlice({
   name: 'userSlice',
   reducers: {
     logout: () => initialState,
-    setUser: (state, action: PayloadAction<ISignInInput>) => {
+    setUser: (state, action: PayloadAction<ILoginResult>) => {
       state.user = action.payload;
     },
   },
 });
-
-export default userSlice.reducer;
-
-export const { logout, setUser } = userSlice.actions;

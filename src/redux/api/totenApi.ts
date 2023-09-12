@@ -14,10 +14,13 @@ export const totenApi = createApi({
         method: "GET"
       })
     }),
-    getTotens: builder.query<IToten[], void>({
-      query: () => ({
-        url: "",
-        method: "GET"
+    getTotens: builder.query<IToten[], string>({
+      query: (text) => ({
+        url: "/BuscarPorEndereco",
+        method: "GET",
+        params: {
+          texto: text
+        }
       })
     })
   })

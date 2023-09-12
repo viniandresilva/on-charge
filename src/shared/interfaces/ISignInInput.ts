@@ -1,9 +1,8 @@
 export interface ISignInInput {
-  email?: string;
-  password?: string;
-  name?: string;
-  birthdate?: string;
-  confirmPassword?: string;
-  cpf?: string;
-  token?: string;
+  email: string,
+  password: string,
+  confirmPassword: string,
+  nomeUsuario: string,
+  cpfUsuario: string,
+  dataNascimento: Date
 }
